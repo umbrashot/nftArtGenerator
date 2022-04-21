@@ -1,0 +1,4 @@
+Layers = ["background", "layer_01", "layer_02", "layer_03"]
+OutputDir = "ntfs"
+ImageWidth = 3000
+ImageHeight = 3000
