@@ -61,8 +61,23 @@ func main() {
 		dirSlice = append(dirSlice, []string{})
 	}
 
+	// Check input layers exists
+	if _, err := os.Stat("./layers"); os.IsNotExist(err) {
+		err := os.Mkdir("./layers", 755)
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}
+
 	// Build map of all files
 	for i, dir := range dirs {
+		if _, err := os.Stat("./layers/" + dir); os.IsNotExist(err) {
+			err := os.Mkdir("./layers/"+dir, 755)
+			if err != nil {
+				log.Fatalln(err)
+			}
+		}
+
 		files, err := os.ReadDir("./layers/" + dir)
 		if err != nil {
 			log.Fatalln(err)
